@@ -17,10 +17,10 @@ if not exist "%LIB_PATH%" (
 )
 
 echo Setting up directories...
-mkdir %CLASSES_PATH% 2>nul
+if not exist "%CLASSES_PATH%" mkdir "%CLASSES_PATH%" 2>nul
 
 echo Compiling Java files...
-javac -cp "%LIB_PATH%\*" -d %CLASSES_PATH% src\main\java\com\expensetracker\model\*.java src\main\java\com\expensetracker\util\*.java src\main\java\com\expensetracker\controller\*.java src\main\java\com\expensetracker\servlet\*.java src\main\java\com\expensetracker\*.java
+javac -cp "%LIB_PATH%\*" -d "%CLASSES_PATH%" src\main\java\com\expensetracker\model\*.java src\main\java\com\expensetracker\util\*.java src\main\java\com\expensetracker\controller\*.java src\main\java\com\expensetracker\servlet\*.java src\main\java\com\expensetracker\*.java
 
 if %ERRORLEVEL% NEQ 0 (
   echo Compilation failed!

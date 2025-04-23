@@ -1,10 +1,9 @@
 package com.expensetracker.controller;
 
 import com.expensetracker.model.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,8 +11,8 @@ public class ExpenseTrackerController {
     
     private TransactionDAO transactionDAO;
     private CategoryDAO categoryDAO;
-    private ObservableList<Transaction> transactions;
-    private ObservableList<Category> categories;
+    private List<Transaction> transactions;
+    private List<Category> categories;
     
     public ExpenseTrackerController() {
         transactionDAO = new TransactionDAO();
@@ -28,19 +27,19 @@ public class ExpenseTrackerController {
     
     public void loadTransactions() {
         List<Transaction> transactionList = transactionDAO.getAllTransactions();
-        transactions = FXCollections.observableArrayList(transactionList);
+        transactions = new ArrayList<>(transactionList);
     }
     
     public void loadCategories() {
         List<Category> categoryList = categoryDAO.getAllCategories();
-        categories = FXCollections.observableArrayList(categoryList);
+        categories = new ArrayList<>(categoryList);
     }
     
-    public ObservableList<Transaction> getTransactions() {
+    public List<Transaction> getTransactions() {
         return transactions;
     }
     
-    public ObservableList<Category> getCategories() {
+    public List<Category> getCategories() {
         return categories;
     }
     

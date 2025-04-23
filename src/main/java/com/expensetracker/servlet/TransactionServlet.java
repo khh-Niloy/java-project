@@ -5,7 +5,6 @@ import com.expensetracker.model.Category;
 import com.expensetracker.model.Transaction;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +12,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-@WebServlet("/transactions")
 public class TransactionServlet extends HttpServlet {
     
     private ExpenseTrackerController controller;
