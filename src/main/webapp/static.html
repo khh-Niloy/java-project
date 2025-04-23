@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Personal Expense Tracker</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      h1 {
+        color: #2c3e50;
+      }
+      .container {
+        display: flex;
+        gap: 20px;
+      }
+      .form-container {
+        flex: 1;
+        padding: 15px;
+        background-color: #f5f5f5;
+        border-radius: 5px;
+      }
+      .data-container {
+        flex: 2;
+      }
+      .summary-container {
+        flex: 1;
+        padding: 15px;
+        background-color: #f5f5f5;
+        border-radius: 5px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      .form-group {
+        margin-bottom: 10px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+      }
+      button {
+        background-color: #3498db;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #2980b9;
+      }
+      .action-links a {
+        margin-right: 10px;
+        text-decoration: none;
+      }
+      .income {
+        color: green;
+      }
+      .expense {
+        color: red;
+      }
+      .summary-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        padding: 5px;
+        border-bottom: 1px solid #ddd;
+      }
+      .message {
+        padding: 15px;
+        background-color: #f8d7da;
+        color: #721c24;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Personal Expense Tracker</h1>
+
+    <div class="message">
+      <strong>Note:</strong> This is a static fallback page. The dynamic
+      application is available at:
+      <ul>
+        <li>
+          <a href="/expense-tracker/transactions"
+            >/expense-tracker/transactions</a
+          >
+        </li>
+      </ul>
+
+      <p>
+        If you're seeing this page, there might be issues with JSP compilation.
+        Please ensure you've run the following:
+      </p>
+      <ol>
+        <li>
+          Run <code>download_embedded_tomcat.bat</code> to download all
+          dependencies
+        </li>
+        <li>Run <code>run_embedded.bat</code> to start the application</li>
+      </ol>
+    </div>
+
+    <div class="container">
+      <!-- Form Container -->
+      <div class="form-container">
+        <h2>Add New Transaction</h2>
+        <form action="transactions" method="post">
+          <input type="hidden" name="action" value="add" />
+
+          <div class="form-group">
+            <label for="amount">Amount:</label>
+            <input
+              type="number"
+              id="amount"
+              name="amount"
+              step="0.01"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="type">Type:</label>
+            <select id="type" name="type" required>
+              <option value="">-- Select Type --</option>
+              <option value="INCOME">Income</option>
+              <option value="EXPENSE">Expense</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+              <option value="">-- Select Category --</option>
+              <option value="1">Food</option>
+              <option value="2">Transportation</option>
+              <option value="3">Housing</option>
+              <option value="4">Utilities</option>
+              <option value="5">Entertainment</option>
+              <option value="6">Shopping</option>
+              <option value="7">Healthcare</option>
+              <option value="8">Salary</option>
+              <option value="9">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required />
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" />
+          </div>
+
+          <button type="submit">Add Transaction</button>
+        </form>
+      </div>
+
+      <!-- Data Container -->
+      <div class="data-container">
+        <h2>Transaction List</h2>
+        <table>
+          <tr>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+          <tr>
+            <td colspan="6" style="text-align: center">No transactions yet.</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Summary Container -->
+      <div class="summary-container">
+        <h2>Summary</h2>
+        <div class="summary-item">
+          <span>Total Income:</span>
+          <span class="income">$0.00</span>
+        </div>
+        <div class="summary-item">
+          <span>Total Expenses:</span>
+          <span class="expense">$0.00</span>
+        </div>
+        <div class="summary-item">
+          <span>Balance:</span>
+          <span class="income">$0.00</span>
+        </div>
+
+        <h3>Expenses by Category</h3>
+        <div class="summary-item">
+          <span>No expense data yet</span>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Set current date as default
+      document.getElementById("date").valueAsDate = new Date();
+    </script>
+  </body>
+</html>

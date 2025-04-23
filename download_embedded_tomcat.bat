@@ -23,6 +23,13 @@ curl -L -O https://repo1.maven.org/maven2/org/apache/tomcat/tomcat-api/9.0.70/to
 curl -L -O https://repo1.maven.org/maven2/org/apache/tomcat/tomcat-util/9.0.70/tomcat-util-9.0.70.jar
 curl -L -O https://repo1.maven.org/maven2/org/apache/tomcat/tomcat-util-scan/9.0.70/tomcat-util-scan-9.0.70.jar
 
+echo Downloading JSP compiler (ECJ)...
+curl -L -O https://repo1.maven.org/maven2/org/eclipse/jdt/ecj/3.18.0/ecj-3.18.0.jar
+
+echo Downloading additional JSTL implementation...
+curl -L -O https://repo1.maven.org/maven2/org/glassfish/web/javax.servlet.jsp.jstl/1.2.5/javax.servlet.jsp.jstl-1.2.5.jar
+curl -L -O https://repo1.maven.org/maven2/javax/servlet/jsp/jstl/javax.servlet.jsp.jstl-api/1.2.2/javax.servlet.jsp.jstl-api-1.2.2.jar
+
 cd ..
 
 echo.
