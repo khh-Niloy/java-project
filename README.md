@@ -1,6 +1,6 @@
 # Personal Expense Tracker
 
-A simple JavaFX application for tracking personal income and expenses.
+A simple web application for tracking personal income and expenses.
 
 ## Features
 
@@ -13,49 +13,51 @@ A simple JavaFX application for tracking personal income and expenses.
 ## Requirements
 
 - Java 11 or higher
-- Maven
+- Internet connection to download dependencies (first run only)
 
-## How to Run
+## How to Run (Simplest Method)
 
-1. Clone or download this repository
-2. Navigate to the project directory
-3. Build the project using Maven:
-   ```
-   mvn clean package
-   ```
-4. Run the application:
-   ```
-   mvn javafx:run
-   ```
+1. Run the `download_embedded_tomcat.bat` script to download required libraries (first time only)
+2. Run the `run_embedded.bat` script to compile and start the application
+3. Open your browser and navigate to http://localhost:8080/expense-tracker
+
+## Project Structure
+
+- `model`: Contains data model classes and database access objects
+- `servlet`: Contains servlet components to handle HTTP requests
+- `controller`: Contains business logic to connect models and views
+- `util`: Contains utility classes like database connection handler
+- `webapp`: Contains JSP pages and web resources
 
 ## Database
 
 The application uses SQLite as the database, which will be created automatically in the project directory as `expense_tracker.db` when you first run the application.
 
-## Project Structure
+## Alternative Installation Methods
 
-- `model`: Contains data model classes and database access objects
-- `view`: Contains JavaFX UI components
-- `controller`: Contains business logic to connect models and views
-- `util`: Contains utility classes like database connection handler
+### Using Apache Tomcat (Manual installation)
+
+1. Run the `build_and_run.bat` script
+2. Follow the instructions to install the WAR file to your Tomcat installation
+3. Start Tomcat
+4. Access the application at http://localhost:8080/expense-tracker
 
 ## Usage
 
 1. **Add Transaction**:
 
    - Fill in the transaction details (amount, type, category, date, description)
-   - Click the "Add" button
+   - Click the "Add Transaction" button
 
 2. **Update Transaction**:
 
-   - Select a transaction from the table
+   - Click the "Edit" link next to the transaction
    - Modify the details in the form
-   - Click the "Update" button
+   - Click the "Update Transaction" button
 
 3. **Delete Transaction**:
 
-   - Select a transaction from the table
-   - Click the "Delete" button
+   - Click the "Delete" link next to the transaction
    - Confirm the deletion in the dialog
 
 4. **View Summary**:
