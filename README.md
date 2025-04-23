@@ -26,17 +26,20 @@ The following diagrams provide a visual representation of the application's arch
 
 ### Class Diagram
 
-![Class Diagram](https://drive.google.com/file/d/1mcX2GH5x3ehqZCdFvFLXGmriUlTypjet/view?usp=sharing)
+<img src="https://drive.google.com/uc?export=view&id=1mcX2GH5x3ehqZCdFvFLXGmriUlTypjet" alt="Class Diagram" width="400">
+
 _Class diagram showing the relationships between the key classes in the application._
 
 ### Use Case Diagram
 
-![Use Case Diagram](https://drive.google.com/file/d/10vrzy96yyDXSC95vcCKIgCOqHIHcrUFS/view?usp=sharing)
+<img src="https://drive.google.com/uc?export=view&id=10vrzy96yyDXSC95vcCKIgCOqHIHcrUFS" alt="Use Case Diagram" width="400">
+
 _Use case diagram showing the interactions between users and the system._
 
 ### Activity Diagram
 
-![Activity Diagram](https://drive.google.com/file/d/1JylLqxF6BuFnWnA61xyQIrx3ZcyntNnI/view?usp=sharing)
+<img src="https://drive.google.com/uc?export=view&id=1JylLqxF6BuFnWnA61xyQIrx3ZcyntNnI" alt="Activity Diagram" width="400">
+
 _Activity diagram illustrating the flow of operations within the application._
 
 ## Usage Guide
