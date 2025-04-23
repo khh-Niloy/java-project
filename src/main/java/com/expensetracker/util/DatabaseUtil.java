@@ -9,12 +9,10 @@ public class DatabaseUtil {
 
     private DatabaseUtil() {
         try {
-            // Make sure SQLite JDBC driver is available
             Class.forName("org.sqlite.JDBC");
             System.out.println("Connecting to database at: " + DB_URL);
             connection = DriverManager.getConnection(DB_URL);
             
-            // Set auto-commit to true for simplicity
             connection.setAutoCommit(true);
             
             System.out.println("Connection established successfully");
@@ -37,7 +35,6 @@ public class DatabaseUtil {
 
     public Connection getConnection() {
         try {
-            // Check if connection is closed or invalid
             if (connection == null || connection.isClosed()) {
                 System.out.println("Connection was closed, reconnecting...");
                 connection = DriverManager.getConnection(DB_URL);
@@ -55,7 +52,6 @@ public class DatabaseUtil {
         try (Statement statement = connection.createStatement()) {
             System.out.println("Initializing database tables...");
             
-            // Create categories table
             String createCategoriesTable = 
                 "CREATE TABLE IF NOT EXISTS categories (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -64,12 +60,11 @@ public class DatabaseUtil {
             statement.execute(createCategoriesTable);
             System.out.println("Categories table created or already exists");
 
-            // Create transactions table
             String createTransactionsTable = 
                 "CREATE TABLE IF NOT EXISTS transactions (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "amount REAL NOT NULL, " +
-                "type TEXT NOT NULL, " +  // 'INCOME' or 'EXPENSE'
+                "type TEXT NOT NULL, " +
                 "category_id INTEGER, " +
                 "date TEXT NOT NULL, " +
                 "description TEXT, " +
@@ -78,7 +73,6 @@ public class DatabaseUtil {
             statement.execute(createTransactionsTable);
             System.out.println("Transactions table created or already exists");
             
-            // Check if categories exist
             ResultSet rs = statement.executeQuery("SELECT COUNT(*) FROM categories");
             int categoryCount = 0;
             if (rs.next()) {
@@ -88,7 +82,6 @@ public class DatabaseUtil {
             
             System.out.println("Found " + categoryCount + " existing categories");
             
-            // Insert default categories if none exist
             if (categoryCount == 0) {
                 System.out.println("No categories found, inserting defaults...");
                 String[] defaultCategories = {"Food", "Transportation", "Housing", "Utilities", "Entertainment", "Shopping", "Healthcare", "Salary", "Other"};
@@ -107,7 +100,6 @@ public class DatabaseUtil {
                 }
             }
             
-            // Verify categories were inserted
             rs = statement.executeQuery("SELECT COUNT(*) FROM categories");
             if (rs.next()) {
                 System.out.println("Total categories after initialization: " + rs.getInt(1));

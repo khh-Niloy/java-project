@@ -86,7 +86,6 @@ public class TransactionServlet extends HttpServlet {
         List<Transaction> transactions = controller.getTransactions();
         List<Category> categories = controller.getCategories();
         
-        // Debug log for categories
         System.out.println("TransactionServlet: Loaded " + categories.size() + " categories");
         if (categories.isEmpty()) {
             System.out.println("WARNING: No categories loaded! Manually inserting defaults...");
@@ -100,11 +99,9 @@ public class TransactionServlet extends HttpServlet {
             controller.addCategory("Salary");
             controller.addCategory("Other");
             
-            // Reload categories
             categories = controller.getCategories();
             System.out.println("After manual insert: " + categories.size() + " categories");
         } else {
-            // Log all categories for debugging
             for (Category cat : categories) {
                 System.out.println(" - Category: " + cat.getId() + " - " + cat.getName());
             }
@@ -115,12 +112,10 @@ public class TransactionServlet extends HttpServlet {
         double balance = controller.getBalance();
         Map<String, Double> expensesByCategory = controller.getExpensesByCategory();
         
-        // Generate HTML directly
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
         
         try (PrintWriter out = response.getWriter()) {
-            // Begin HTML
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -149,13 +144,10 @@ public class TransactionServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             
-            // Header
             out.println("<h1>Personal Expense Tracker</h1>");
             
-            // Main container
             out.println("<div class=\"container\">");
             
-            // Form
             out.println("<div class=\"form-container\">");
             out.println("<h2>Add New Transaction</h2>");
             out.println("<form action=\"" + request.getContextPath() + "/transactions\" method=\"post\">");
@@ -201,7 +193,6 @@ public class TransactionServlet extends HttpServlet {
             out.println("</form>");
             out.println("</div>");
             
-            // Transactions table
             out.println("<div class=\"data-container\">");
             out.println("<h2>Transaction List</h2>");
             out.println("<table>");
@@ -245,7 +236,6 @@ public class TransactionServlet extends HttpServlet {
             out.println("</table>");
             out.println("</div>");
             
-            // Summary
             out.println("<div class=\"summary-container\">");
             out.println("<h2>Summary</h2>");
             
@@ -280,15 +270,12 @@ public class TransactionServlet extends HttpServlet {
             
             out.println("</div>");
             
-            // End container
             out.println("</div>");
             
-            // Script
             out.println("<script>");
             out.println("document.getElementById('date').valueAsDate = new Date();");
             out.println("</script>");
             
-            // End HTML
             out.println("</body>");
             out.println("</html>");
         }
@@ -300,18 +287,15 @@ public class TransactionServlet extends HttpServlet {
         Transaction transaction = findTransactionById(id);
         List<Category> categories = controller.getCategories();
         
-        // Debug log for categories
         System.out.println("Edit form: Loaded " + categories.size() + " categories");
         if (categories.isEmpty()) {
             System.out.println("WARNING: No categories available for edit form!");
         }
         
-        // Generate HTML edit form
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
         
         try (PrintWriter out = response.getWriter()) {
-            // HTML header and styles similar to listTransactions but with selected transaction values
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");

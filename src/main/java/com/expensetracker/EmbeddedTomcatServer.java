@@ -18,7 +18,6 @@ public class EmbeddedTomcatServer {
         String webappDirLocation = "src/main/webapp/";
         Tomcat tomcat = new Tomcat();
         
-        // Set port
         String webPort = System.getenv("PORT");
         if (webPort == null || webPort.isEmpty()) {
             webPort = "8080";
@@ -26,17 +25,14 @@ public class EmbeddedTomcatServer {
         System.out.println("Configuring Tomcat to use port: " + webPort);
         tomcat.setPort(Integer.parseInt(webPort));
         
-        // Set host
         tomcat.setHostname("localhost");
         
-        // Set base directory
         String baseDirPath = System.getProperty("java.io.tmpdir") + "/tomcat-embedded";
         System.out.println("Base directory: " + baseDirPath);
         File baseDir = new File(baseDirPath);
         baseDir.mkdirs();
         tomcat.setBaseDir(baseDir.getAbsolutePath());
         
-        // Configure connector
         tomcat.getConnector();
         
         System.out.println("Adding webapp context at /expense-tracker");
@@ -48,10 +44,8 @@ public class EmbeddedTomcatServer {
         System.out.println("Configuring app with basedir: " + 
                 new File("./" + webappDirLocation).getAbsolutePath());
         
-        // Set up JSP handling
         ctx.addServletContainerInitializer(new JasperInitializer(), null);
         
-        // Set system property to find the JSP compiler jar
         String jspCompilerPath = System.getProperty("user.dir") + "/lib/ecj-3.18.0.jar";
         System.out.println("JSP Compiler path: " + jspCompilerPath);
         if (new File(jspCompilerPath).exists()) {
@@ -61,7 +55,6 @@ public class EmbeddedTomcatServer {
             System.out.println("Please run download_embedded_tomcat.bat to download dependencies");
         }
         
-        // Declare an alternative location for your "WEB-INF/classes" dir
         File additionWebInfClasses = new File("target/classes");
         System.out.println("Classes directory: " + additionWebInfClasses.getAbsolutePath());
         
