@@ -2,6 +2,25 @@
 
 A web application for tracking personal income and expenses, designed to help you manage your finances effectively.
 
+## Problem Statement
+
+Managing personal finances effectively is a common challenge faced by individuals in their daily lives.
+Many people struggle to track their expenses, identify spending patterns, and make informed decisions
+about budgeting and saving. Without a proper system, financial oversight often leads to overspending,
+lack of savings, and difficulty in understanding where the money is going.
+
+The Expense Tracker application is designed to solve this problem by providing a simple yet powerful
+tool to:
+
+- Record daily income and expenses
+- Categorize transactions for better organization
+- View summarized financial data and breakdowns by category or transaction type
+- Edit or delete transactions when necessary to maintain accurate records
+
+By offering these features in an intuitive interface, this app empowers users to take control of their
+financial activities, ultimately helping them build better money management skills and achieve financial
+goals more efficiently.
+
 ## Features
 
 - Add, view, update, and delete income/expense transactions
